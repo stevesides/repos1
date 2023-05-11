@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class Personnel extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('Personnel', function (Blueprint $table) {
+            $table->bigIncrements('id_pers');
+            $table->string('Nom', 255);
+            $table->string('Service', 255);
+            $table->string('Section', 255);
+            $table->string('cadre', 255);
+            $table->char('Indice', 255);
+            $table->text('echelon', 255);
+            $table->text('ancienneté', 255);
+            $table->int('age_retraite',10);
+            $table->string('email')->unique();
+        });
+    
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('Personnel');
+    }
+}
